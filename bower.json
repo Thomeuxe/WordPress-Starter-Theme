@@ -1,0 +1,17 @@
+{
+  "name": "tle-Wordpress-Starter-Theme",
+  "version": "4.2.1",
+  "homepage": "https://github.com/Thomeuxe/WordPress-Starter-Theme",
+  "authors": [
+    "Thomas Lecoeur <thomeuxe@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/js/vendor",
+    "test",
+    "tests"
+  ]
+}
