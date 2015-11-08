@@ -1,18 +1,18 @@
 <?php
 /**
- * _mbbasetheme theme init setup
+ * _tletheme theme init setup
  *
- * @package _mbbasetheme
+ * @package _tletheme
  */
 
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
 if ( ! isset( $content_width ) ) {
-	$content_width = 900; /* pixels */
+	$content_width = 980; /* pixels */
 }
 
-if ( ! function_exists( '_mbbasetheme_setup' ) ) :
+if ( ! function_exists( '_tletheme_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -20,15 +20,15 @@ if ( ! function_exists( '_mbbasetheme_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function _mbbasetheme_setup() {
+function _tletheme_setup() {
 
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on _mbbasetheme, use a find and replace
-	 * to change '_mbbasetheme' to the name of your theme in all the template files
+	 * If you're building a theme based on _tletheme, use a find and replace
+	 * to change '_tletheme' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( '_mbbasetheme', get_template_directory() . '/languages' );
+	load_theme_textdomain( '_tletheme', get_template_directory() . '/languages' );
 
 	// Clean up the head
 	remove_action( 'wp_head', 'rsd_link' );
@@ -41,12 +41,12 @@ function _mbbasetheme_setup() {
 
 	// Register nav menus
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', '_mbbasetheme' ),
+		'primary' => __( 'Primary Menu', '_tletheme' ),
 	) );
 
 	// Register Widget Areas
 	// Function location: /lib/theme-functions.php
-	add_action( 'widgets_init', 'mb_widgets_init' );
+	add_action( 'widgets_init', 'tle_widgets_init' );
 
 	// Execute shortcodes in widgets
 	// add_filter('widget_text', 'do_shortcode');
@@ -65,28 +65,22 @@ function _mbbasetheme_setup() {
 	// Add Image Sizes
 	// add_image_size( $name, $width = 0, $height = 0, $crop = false );
 
-	// Setup the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( '_mbbasetheme_custom_background_args', array(
-		'default-color' => 'ffffff',
-		'default-image' => '',
-	) ) );
-
 	// Remove Dashboard Meta Boxes
 	// Function location: /lib/theme-functions.php
-	add_action( 'wp_dashboard_setup', 'mb_remove_dashboard_widgets' );
+	add_action( 'wp_dashboard_setup', 'tle_remove_dashboard_widgets' );
 
 	// Change Admin Menu Order
 	// Function location: /lib/theme-functions.php
 	add_filter( 'custom_menu_order', '__return_true' );
-	add_filter( 'menu_order', 'mb_custom_menu_order' );
+	add_filter( 'menu_order', 'tle_custom_menu_order' );
 
 	// Hide Admin Areas that are not used
 	// Function location: /lib/theme-functions.php
-	add_action( 'admin_menu', 'mb_remove_menu_pages' );
+	add_action( 'admin_menu', 'tle_remove_menu_pages' );
 
 	// Remove default link for images
 	// Function location: /lib/theme-functions.php
-	add_action( 'admin_init', 'mb_imagelink_setup', 10 );
+	add_action( 'admin_init', 'tle_imagelink_setup', 10 );
 
 	// Enable support for HTML5 markup.
 	add_theme_support( 'html5', array(
@@ -100,18 +94,18 @@ function _mbbasetheme_setup() {
 
 	// Enqueue scripts
 	// Function location: /lib/theme-functions.php
-	add_action( 'wp_enqueue_scripts', 'mb_scripts' );
+	add_action( 'wp_enqueue_scripts', 'tle_scripts' );
 
 	// Remove Query Strings From Static Resources
 	// Function location: /lib/theme-functions.php
-	add_filter( 'script_loader_src', 'mb_remove_script_version', 15, 1 );
-	add_filter( 'style_loader_src', 'mb_remove_script_version', 15, 1 );
+	add_filter( 'script_loader_src', 'tle_remove_script_version', 15, 1 );
+	add_filter( 'style_loader_src', 'tle_remove_script_version', 15, 1 );
 
 	// Remove Read More Jump
 	// Function location: /lib/theme-functions.php
-	add_filter( 'the_content_more_link', 'mb_remove_more_jump_link' );
+	add_filter( 'the_content_more_link', 'tle_remove_more_jump_link' );
 
 }
-endif; // _mbbasetheme_setup
+endif; // _tletheme_setup
 
-add_action( 'after_setup_theme', '_mbbasetheme_setup' );
+add_action( 'after_setup_theme', '_tletheme_setup' );

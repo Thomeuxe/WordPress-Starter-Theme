@@ -3,7 +3,7 @@
 /**
  * Register the required plugins for this theme.
  */
-function mb_register_required_plugins() {
+function tle_register_required_plugins() {
 
 	$plugins = array(
 
@@ -17,13 +17,6 @@ function mb_register_required_plugins() {
 		array(
 			'name' 				=> 'Pods - Custom Content Types and Fields',
 			'slug' 				=> 'pods',
-			'required' 			=> true,
-			'force_activation'	=> true
-		),
-
-		array(
-			'name' 				=> 'Google Analytics for WordPress',
-			'slug' 				=> 'google-analytics-for-wordpress',
 			'required' 			=> true,
 			'force_activation'	=> true
 		),

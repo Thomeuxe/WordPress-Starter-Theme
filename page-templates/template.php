@@ -1,10 +1,9 @@
 <?php
 /**
- * Template Name: Portfolio Page
+ * Template Name: Basic Page Template
  *
- * Displays content for portfolio page layouts
  *
- * @package _mbbasetheme
+ * @package _tletheme
  */
 
 get_header(); ?>

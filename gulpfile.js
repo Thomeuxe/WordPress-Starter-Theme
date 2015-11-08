@@ -81,13 +81,40 @@ gulp.task('rsync', ['minifyCSS', 'minifyJS'] , function() {
   return gulp.src('./')
     .pipe(plugins.rsync({
       root: './',
-      hostname: 'ftp.website.com',
-      username: 'username',
-      destination: '/dir/',
+      hostname: 'ftp.thomaslecoeur.com',
+      username: 'thomasle',
+      destination: '/public_html/rsync/',
+      incremental: true,
+      progress: true,
+      relative: true,
+      emptyDirectories: true,
+      clean: true,
       recursive: true,
-      exclude: ['_*/', '_.*', '.*', 'node_modules'],
+      exclude: ['node_modules'],
     }));
 });
+
+gulp.task( 'deploy', function () {
+
+    var conn = plugins.vinylFtp.create( {
+        host:     'ftp.host.com',
+        user:     'username',
+        password: 'pass',
+        parallel: 10,
+    } );
+
+    var globs = [
+        'index.php'
+    ];
+
+    // using base = '.' will transfer everything to /public_html correctly
+    // turn off buffering in gulp.src for best performance
+
+    return gulp.src( globs, { base: '.', buffer: false } )
+        .pipe( conn.newer( '/public_html/rsync' ) ) // only upload newer files
+        .pipe( conn.dest( '/public_html/rsync' ) );
+
+} );
 
 // define tasks here
 gulp.task('default', ['serve']);
